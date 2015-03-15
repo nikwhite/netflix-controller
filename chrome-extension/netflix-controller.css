@@ -1,0 +1,4 @@
+a.playLink:focus, a.playHover:focus {
+	outline: 2px solid red !important;
+	opacity: 1 !important;
+}

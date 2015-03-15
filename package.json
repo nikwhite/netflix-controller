@@ -1,0 +1,16 @@
+{
+  "name": "netflix-controller",
+  "version": "0.0.1",
+  "description": "Control netflix running in Google Chrome from any web browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nik White (@underscorenik)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.2",
+    "lodash": "^3.5.0",
+    "socket.io": "1.3.5"
+  }
+}
