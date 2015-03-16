@@ -54,6 +54,7 @@ Please let me know if you've used this successfully on other platforms.
 ## TODO
 
 * Fullscreen button
+* Continue Playing
 * Fast-forward/rewind
 * Season/episode selection
 

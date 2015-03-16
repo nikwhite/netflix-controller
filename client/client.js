@@ -5,9 +5,22 @@
 (function(){
 	// not currently in use
 	var api = window.netflixController = {};
+	var socket = api.socket = io();
 
-	// connect to current host
-	var socket = io();
+	var lastTime = (new Date()).getTime();
+
+	function reconnect() {
+		socket = io({ forceNew: true });
+	}
+
+	var interval = setInterval(function() {
+		var currentTime = (new Date()).getTime();
+		if ( currentTime > (lastTime + 60000) ) {  // wait 1 minute
+			alert('reconnecting');
+			reconnect();
+		}
+	  lastTime = currentTime;
+	}, 1000);
 
 	// button events
 	$('body').on('click', '[data-event]', function (e){
