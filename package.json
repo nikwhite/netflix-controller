@@ -11,7 +11,7 @@
   "repository": { 
     "type" : "git", 
     "url" : "https://github.com/nikwhite/netflix-controller.git"
-  }
+  },
   "dependencies": {
     "express": "^4.12.2",
     "lodash": "^3.5.0",
