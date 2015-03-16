@@ -4,7 +4,7 @@
 	var searchClickId = 'searchTab';
 	var $titles;
 
-	var socket = io('127.0.0.1');
+	var socket = io('127.0.0.1:8889');
 
 	function search(value) {
 		document.location.pathname = '/search/' + window.encodeURIComponent(value);
@@ -18,40 +18,42 @@
 		}
 	}
 
-	function setTitles() {
-		if (!$titles) {
-			$titles = $('a.playHover, a.playLink');
-		}
-	}
-
-
-	function eq(arr, index) {
+	// positive modulo for out-of-bounds array access
+	function modulo(arr, index) {
 		return (arr.length + (index % arr.length)) % arr.length;
 	}
 
+	function active() {
+		return document.activeElement;
+	}
+
+	function ffw() {
+
+	}
+
 	function navigate(action) {
-		console.log(action);
-		setTitles();
+		
+		if (!$titles) {
+			$titles = $('a.playHover, a.playLink');
+		}
+
 		switch (action) {
 			case 'tab': 
-				console.log('index: '+$titles.index(document.activeElement));
-				console.log(document.activeElement);
-				$titles.eq( $titles.index(document.activeElement) + 1 )[0].focus();
+				$titles.eq( modulo( $titles, $titles.index(active()) + 1 ) ).focus();
 				break;
+			
 			case 'shift-tab':
-				$titles.eq( $titles.index(document.activeElement) - 1 )[0].focus();
+				$titles.eq( modulo( $titles, $titles.index(active()) - 1 ) ).focus();
 				break;
+
 			case 'select':
-				console.log('selecting');
-				document.activeElement.click();
+				active().click();
 				break;
 		}
 	}
 
 	socket.on('action', click);
-
 	socket.on('search', search);
-
 	socket.on('navigate', navigate);
 
 }());

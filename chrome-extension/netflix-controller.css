@@ -1,4 +1,6 @@
-a.playLink:focus, a.playHover:focus {
+a.playLink:focus, 
+a.playHover:focus {
+	box-shadow: 0 0 10px 2px red !important;
 	outline: 2px solid red !important;
 	opacity: 1 !important;
 }
