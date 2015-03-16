@@ -51,3 +51,8 @@ Start Netflix on the host machine with the above installation steps completed. P
 
 Please let me know if you've used this successfully on other platforms.
 
+## TODO
+
+* Fullscreen button
+* Fast-forward/rewind
+* Season/episode selection
