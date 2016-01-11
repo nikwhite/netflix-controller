@@ -35,6 +35,8 @@
 .icon-arrow-back:before {content: "\e607";}
 .icon-arrow-forward:before {content: "\e608";}
 .icon-check:before {content: "\e609";}
+.icon-mute:before {content: "\e904";}
+.icon-forward:before {content: "\e900";}
 
 .cf:after,
 .cf:before {
