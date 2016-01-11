@@ -28,54 +28,6 @@
 		{
 			"icon": {
 				"paths": [
-					"M598 214h212v212h-84v-128h-128v-84zM726 726v-128h84v212h-212v-84h128zM214 426v-212h212v84h-128v128h-84zM298 598v128h128v84h-212v-212h84z"
-				],
-				"attrs": [],
-				"isMulticolor": false,
-				"tags": [
-					"fullscreen"
-				],
-				"grid": 0
-			},
-			"attrs": [],
-			"properties": {
-				"order": 2,
-				"id": 3,
-				"prevSize": 20,
-				"code": 59655,
-				"name": "fullscreen"
-			},
-			"setIdx": 1,
-			"setId": 4,
-			"iconIdx": 1
-		},
-		{
-			"icon": {
-				"paths": [
-					"M598 138q130 28 214 133t84 241-84 241-214 133v-88q94-28 153-106t59-180-59-180-153-106v-88zM704 512q0 120-106 172v-344q106 52 106 172zM128 384h170l214-214v684l-214-214h-170v-256z"
-				],
-				"attrs": [],
-				"isMulticolor": false,
-				"tags": [
-					"volume_up"
-				],
-				"grid": 0
-			},
-			"attrs": [],
-			"properties": {
-				"order": 1,
-				"id": 2,
-				"prevSize": 20,
-				"code": 59651,
-				"name": "volume_up"
-			},
-			"setIdx": 1,
-			"setId": 4,
-			"iconIdx": 2
-		},
-		{
-			"icon": {
-				"paths": [
 					"M512 170v180l-90-90zM182 128l714 714-54 54-88-88q-74 58-156 78v-88q50-14 96-50l-182-182v288l-214-214h-170v-256h202l-202-202zM810 512q0-102-59-180t-153-106v-88q130 28 214 133t84 241q0 96-44 178l-64-66q22-54 22-112zM704 512q0 18-2 26l-104-104v-94q106 52 106 172z"
 				],
 				"attrs": [],
