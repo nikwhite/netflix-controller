@@ -48,6 +48,7 @@ Start Netflix on the host machine with the above installation steps completed. P
 
 * Mac OS X 10.10
 * Windows 7 
+* Windows XP
 
 Please let me know if you've used this successfully on other platforms.
 
