@@ -51,14 +51,6 @@
 		item.blur();
 	}
 
-	function simulateKeyEvent(character) {
-	  var evt = document.createEvent("KeyboardEvent");
-		var k = character.charCodeAt(0);
-		evt.initKeyboardEvent("keypress", true, true, window,
-	                    false, false, false, false, k, k);
-	  document.dispatchEvent(evt);
-	}
-
 	function search(value) {
 		document.location.pathname = '/search/' + window.encodeURIComponent(value);
 	}
@@ -68,9 +60,6 @@
 
 		if (node) {
 			node.click();
-		}
-		if (action === 'fullscreen') {
-			simulateKeyEvent('f');
 		}
 	}
 

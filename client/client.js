@@ -15,15 +15,21 @@
 	}
 
 	function fillSelect(select, data) {
-		select.find('option').remove().end();
+		var $select = $(select);
+
+		$select.find('option').remove().end();
 		$(data).each(function() {
 			var option = $('<option>');
 			option.val(this.id).html(this.label);
-			select.append(option);
+			$select.append(option);
 			if (this.selected) {
-				select.val(this.id);
+				$select.val(this.id);
 			}
 		});
+	}
+
+	function hideAll() {
+		$('#search, #player, #browsing, #audio, #subtitles').hide();
 	}
 
 	setInterval(function() {
@@ -38,6 +44,7 @@
 
 	$(document).ready(function() {
 		socket.emit('document:ready', {});
+		hideAll();
 	});
 
 	// button events
@@ -54,10 +61,16 @@
 	})
 
 	socket.on('event:playing', function (argument) {
-		console.log(argument);
-
+		hideAll();
 		fillSelect($('#cmbAudio'), argument.audio);
 		fillSelect($('#cmbSubtitles'), argument.subtitles);
+		if (argument.audio.length > 0) {
+			$('#audio').show();
+		}
+		if (argument.subtitles.length > 0) {
+			$('#subtitles').show();
+		}
+		$('#player').show();
 	});
 
 	$('#cmbAudio, #cmbSubtitles').on('change', function(e) {

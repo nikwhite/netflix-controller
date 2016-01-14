@@ -146,11 +146,11 @@ h2 {
 }
 
 .languages {
-	width: 90%;
-	margin-left: auto;
+	width: 100%;
 }
 
 .languages select {
 	width: 90%;
 	font-size: 1em;
+	margin-left: 5%;
 }
