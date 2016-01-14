@@ -15,7 +15,10 @@ var IP = _.chain(ifaces).values().flatten().filter( function (iface) {
 var events = [
     'action',
     'search',
-    'navigate'
+    'navigate',
+    'event:playing',
+    'document:ready',
+    'language:change'
 ];
 
 app.get('/', function(req, res){
@@ -25,9 +28,10 @@ app.get('/', function(req, res){
 app.use(express.static('client'));
 
 io.on('connection', function(socket){
-    
+
     function forward(event, payload) {
         socket.broadcast.emit(event, payload);
+        console.log(event, payload);
     }
     // partially apply forward() handlers with events
     events.forEach(function(event){

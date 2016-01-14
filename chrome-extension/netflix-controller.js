@@ -6,6 +6,59 @@
 
 	var socket = io('127.0.0.1:8889');
 
+	function checkTrackSettings()
+	{
+		var div = $('#player-menu-track-settings');
+		var audioLi = div.find('ol.player-audio-tracks li');
+		var subtitlesLi = div.find('ol.player-timed-text-tracks li');
+
+		if (div && (audioLi.length > 0 || subtitlesLi.length > 0)) {
+			// Agrego listeners
+			$('ol.player-audio-tracks li, ol.player-timed-text-tracks li').on('click', function() {
+				setTimeout( checkTrackSettings, 100 );
+			});
+			// Parseo los datos y los envío al cliente
+			var audio = audioLi.map(function() {
+				$this = $(this);
+				return {
+					id: $this.data('id'),
+					label: $this.html(),
+					selected: $this.hasClass('player-track-selected')
+				};
+			}).toArray();
+
+			var subtitles = subtitlesLi.map(function() {
+				$this = $(this);
+				return {
+					id: $this.data('id'),
+					label: $this.html(),
+					selected: $this.hasClass('player-track-selected')
+				};
+			}).toArray();
+
+			socket.emit('event:playing', {
+				audio: audio,
+				subtitles: subtitles
+			});
+		} else {
+			setTimeout( checkTrackSettings, 100 );
+		}
+	}
+
+	function languageChange(argument) {
+		var item = $('[data-id="' + argument + '"]');
+		item.click();
+		item.blur();
+	}
+
+	function simulateKeyEvent(character) {
+	  var evt = document.createEvent("KeyboardEvent");
+		var k = character.charCodeAt(0);
+		evt.initKeyboardEvent("keypress", true, true, window,
+	                    false, false, false, false, k, k);
+	  document.dispatchEvent(evt);
+	}
+
 	function search(value) {
 		document.location.pathname = '/search/' + window.encodeURIComponent(value);
 	}
@@ -15,6 +68,9 @@
 
 		if (node) {
 			node.click();
+		}
+		if (action === 'fullscreen') {
+			simulateKeyEvent('f');
 		}
 	}
 
@@ -32,16 +88,16 @@
 	}
 
 	function navigate(action) {
-		
+
 		if (!$titles) {
 			$titles = $('a.playHover, a.playLink');
 		}
 
 		switch (action) {
-			case 'tab': 
+			case 'tab':
 				$titles.eq( modulo( $titles, $titles.index(active()) + 1 ) ).focus();
 				break;
-			
+
 			case 'shift-tab':
 				$titles.eq( modulo( $titles, $titles.index(active()) - 1 ) ).focus();
 				break;
@@ -55,5 +111,11 @@
 	socket.on('action', click);
 	socket.on('search', search);
 	socket.on('navigate', navigate);
+	socket.on('document:ready', checkTrackSettings);
+	socket.on('language:change', languageChange);
+
+	$(document).ready(function(){
+		checkTrackSettings();
+	});
 
 }());

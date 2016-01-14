@@ -80,7 +80,7 @@ li a {
 
 h1, h2 {
 	text-transform: uppercase;
-	
+
 	text-align: center;
 	margin: 0;
 }
@@ -145,3 +145,12 @@ h2 {
 	font-size: 1.25em;
 }
 
+.languages {
+	width: 90%;
+	margin-left: auto;
+}
+
+.languages select {
+	width: 90%;
+	font-size: 1em;
+}
