@@ -4,7 +4,7 @@
 	var searchClickId = 'searchTab';
 	var $titles;
 
-	var socket = io('127.0.0.1:8889');
+	// var socket = io('127.0.0.1:8889');
 
 	function search(value) {
 		document.location.pathname = '/search/' + window.encodeURIComponent(value);
@@ -52,8 +52,9 @@
 		}
 	}
 
-	socket.on('action', click);
-	socket.on('search', search);
-	socket.on('navigate', navigate);
+	// socket.on('action', click);
+	// socket.on('search', search);
+	// socket.on('navigate', navigate);
+
 
 }());

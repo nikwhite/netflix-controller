@@ -9,6 +9,11 @@
     "48": "icon_48.png",
     "128": "icon_128.png" 
   },
+  "app": {
+    "background": {
+      "scripts": ["tcp-server.js"]
+    }
+  },
   "content_scripts": [{
       "matches": ["*://*.netflix.com/*"],
       "js": [
@@ -20,5 +25,10 @@
         "netflix-controller.css"
       ]
   }],
-  "permissions": ["tabs"]
+  "permissions": ["tabs"],
+  "sockets":{
+    "tcpServer": {
+      "listen": ":8889"
+    }
+  }
 }
